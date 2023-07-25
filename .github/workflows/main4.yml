@@ -36,4 +36,4 @@ jobs:
           script: |
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_FRONT_REPO }}
-            sudo docker run --rm -d -p 22:80 ${{ secrets.DOCKER_FRONT_REPO }}
+            sudo docker run --rm -d -p 8080:80 ${{ secrets.DOCKER_FRONT_REPO }}
