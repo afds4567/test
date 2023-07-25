@@ -3,7 +3,7 @@ name: Docker Image CD
 on:
   push:
     branches:
-      - prod
+      - main
 
 jobs:
   build:
