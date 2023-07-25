@@ -1,4 +1,4 @@
-ROM node:18.10.0
+FROM node:18.10.0
 // 나에게 맞는 node 버전을 적어준다.
 
 RUN mkdir -p /app
