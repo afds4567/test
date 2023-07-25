@@ -25,3 +25,15 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_FRONT_REPO }}
+
+      - name: Deploy Front to prod
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.FRONT_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          password: ${{ secrets.AWS_PASSWORD }}
+          port: 22
+          script: |
+            sudo docker rm -f $(docker ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_FRONT_REPO }}
+            sudo docker run --rm -d -p ${{ secrets.AWS_PORT }}:80 ${{ secrets.DOCKER_FRONT_REPO }}
