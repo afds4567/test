@@ -5,7 +5,7 @@ WORKDIR /app
 ADD . /app
 
 
-RUN npm install
+RUN npm install --force
 
 
 ENV HOST 0.0.0.0
