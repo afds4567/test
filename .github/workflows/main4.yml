@@ -36,4 +36,4 @@ jobs:
           script: |
             sudo docker rm -f frontend
             sudo docker pull ${{ secrets.DOCKER_FRONT_REPO }}
-            sudo docker run --rm -d --name frontend -p 8080:80 ${{ secrets.DOCKER_FRONT_REPO }}
+            sudo docker run --rm -d --name frontend -p 3000:80 ${{ secrets.DOCKER_FRONT_REPO }}
