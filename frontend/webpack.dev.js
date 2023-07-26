@@ -10,7 +10,6 @@ module.exports = merge(common, {
     port: 3000,
     static: 'public',
     host: '0.0.0.0',
-    disableHostCheck: true,
   },
   plugins: [new ReactRefreshWebpackPlugin()],
 });
