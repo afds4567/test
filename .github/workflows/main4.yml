@@ -24,7 +24,7 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
-          tags: afds4567/test-image
+          tags: ${{ secrets.DOCKER_FRONT_REPO }}
 
       - name: Deploy Front to prod
         uses: appleboy/ssh-action@master
@@ -34,6 +34,6 @@ jobs:
           password: ${{ secrets.AWS_PASSWORD }}
           port: 22
           script: |
-            sudo docker compose down
-            sudo docker compose pull
-            sudo docker compose up -d
+            sudo docker rm -f frontend
+            sudo docker pull ${{ secrets.DOCKER_FRONT_REPO }}
+            sudo docker run --rm -d --name frontend -p 80:3000 ${{ secrets.DOCKER_FRONT_REPO }}
