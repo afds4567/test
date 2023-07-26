@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    image: afds4567/test-image
+    build: .
+    restart: always
+    ports:
+      - 80:3000
